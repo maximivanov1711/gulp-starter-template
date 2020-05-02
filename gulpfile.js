@@ -10,13 +10,13 @@ const gulp_uglify = require("gulp-uglify-es").default;
 
 gulp_sass.compiler = require("node-sass");
 
-const css_files = ["./src/css/main.css", "./src/css/media.css"];
+const css_files = ["./app/src/css/main.css", "./app/src/css/media.css"];
 
 function scripts() {
   return gulp
-    .src(["./src/js/main.js"])
+    .src(["./app/src/js/main.js"])
     .pipe(gulp_uglify())
-    .pipe(gulp.dest("build/js"))
+    .pipe(gulp.dest("./app/build/js"))
     .pipe(browser_sync.stream());
 }
 
@@ -35,27 +35,27 @@ function styles() {
         level: 2,
       })
     )
-    .pipe(gulp.dest("build/css"))
+    .pipe(gulp.dest("./app/build/css"))
     .pipe(browser_sync.stream());
 }
 
 function sass() {
   return gulp
-    .src("./src/scss/**/*.scss")
+    .src("./app/src/scss/**/*.scss")
     .pipe(gulp_sass().on("error", gulp_sass.logError))
-    .pipe(gulp.dest("./src/css"));
+    .pipe(gulp.dest("./app/src/css"));
 }
 
 function watch() {
   browser_sync.init({
     server: {
-      baseDir: "./",
+      baseDir: "./app/",
     },
   });
-  gulp.watch("./src/js/**/*.js", scripts);
-  gulp.watch("./src/css/**/*.css", styles);
-  gulp.watch("./src/scss/**/*.scss", sass);
-  gulp.watch("./*.html").on("change", browser_sync.reload);
+  gulp.watch("./app/src/js/**/*.js", scripts);
+  gulp.watch("./app/src/css/**/*.css", styles);
+  gulp.watch("./app/src/scss/**/*.scss", sass);
+  gulp.watch("./app/*.html").on("change", browser_sync.reload);
 }
 
 gulp.task("watch", watch);
