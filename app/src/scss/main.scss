@@ -1,5 +1,9 @@
+@import "fonts.scss";
 @import "variables.scss";
 
 // Your stiles
+body {
+  font-family: "OpenSans";
+}
 
 @import "media.scss";

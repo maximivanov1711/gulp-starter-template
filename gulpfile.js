@@ -16,7 +16,7 @@ function scripts() {
   return gulp
     .src(["./app/src/js/main.js"])
     .pipe(gulp_uglify())
-    .pipe(gulp.dest("./app/build/js"))
+    .pipe(gulp.dest("./app/built/js"))
     .pipe(browser_sync.stream());
 }
 
@@ -35,7 +35,7 @@ function styles() {
         level: 2,
       })
     )
-    .pipe(gulp.dest("./app/build/css"))
+    .pipe(gulp.dest("./app/built/css"))
     .pipe(browser_sync.stream());
 }
 
