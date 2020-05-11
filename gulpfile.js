@@ -15,7 +15,7 @@ const css_files = ["./app/src/css/main.css", "./app/src/css/media.css"];
 function scripts() {
   return gulp
     .src(["./app/src/js/main.js"])
-    .pipe(gulp_uglify())
+    .pipe(gulp_uglify({ toplevel: true }))
     .pipe(gulp.dest("./app/built/js"))
     .pipe(browser_sync.stream());
 }
